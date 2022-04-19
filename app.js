@@ -2,9 +2,13 @@ const express = require('express')
 const app = express()
 const PORT = 3000
 const mongoose = require('mongoose')
+const exphbs = require('express-handlebars')
 
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection
+
+app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
+app.set('view engine', 'hbs')
 
 // 連線失敗
 db.on('error', () => {
@@ -18,7 +22,7 @@ db.once('open', () => {
 
 
 app.get('/', (req, res) => {
-  res.send('Hello this is shorten url.')
+  res.render('index')
 })
 
 app.listen(PORT, () => {
