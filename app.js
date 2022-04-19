@@ -8,12 +8,12 @@ const db = mongoose.connection
 
 // 連線失敗
 db.on('error', () => {
-  console.log('mongodb error!')
+  console.log('mongodb error！')
 })
 
 // 連線成功
 db.once('open', () => {
-  console.log('mongodb connected!')
+  console.log('mongodb connected！')
 })
 
 
