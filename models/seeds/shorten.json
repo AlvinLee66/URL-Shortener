@@ -2,15 +2,15 @@
   "results": [
     { 
       "url": "https://tw.alphacamp.co/about-us",
-      "shorten": "http://localhost:3000/seed1"
+      "shortenCode": "seed1"
     },
     {
       "url": "https://www.google.com.tw/",
-      "shorten": "http://localhost:3000/seed2"
+      "shortenCode": "seed2"
     },
     {
       "url": "https://tw.yahoo.com/",
-      "shorten": "http://localhost:3000/seed3"
+      "shortenCode": "seed3"
     }
   ]
 }

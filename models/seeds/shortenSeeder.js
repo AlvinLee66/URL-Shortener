@@ -12,6 +12,9 @@ db.once('open', () => {
   console.log('mongodb connected！')
   console.log('creating seeds ...')
   Shorten.create(shortenData)
-    .then(()=> {console.log('done！')})
+    .then(() => {
+      console.log('done！')
+      db.close()
+    })
     .catch(error => console.log(error))
 })

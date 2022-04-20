@@ -2,14 +2,20 @@
   <div class="row">
     <h2>URL Shortener</h2>
     <div>
-      <img src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png" alt="picture">
+      <img src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png" alt="picture" style="width: 200px;">
     </div>
-    <div class="input-group mb-3" style="width: 800px;">
-      <span class="input-group-text" id="basic-addon3">input your URL:</span>
-      <input type="text" class="form-control" placeholder="https://example.com/users/..." id="basic-url" aria-describedby="basic-addon3">
-    </div>
-    <div>
+    {{#if shorten}}
+    <h2>Success！Please use this link:</h2>
+    <p>{{ shorten.shortenCode }}</p>
+    {{else}}
+    <form method="POST" action="/">
+      <div class="input-group mb-3" style="width: 700px;">
+        <span class="input-group-text" id="basic-addon3">input your URL:</span>
+        <input type="text" name="url" class="form-control" placeholder="https://example.com/users/..." id="basic-url" aria-describedby="basic-addon3">
+      </div>
+      
       <button class="btn btn-outline-primary" type="submit">Shorten</button>
-    </div>
+    </form>
+    {{/if}}
   </div>
 </div>
