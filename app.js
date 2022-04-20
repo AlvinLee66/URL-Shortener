@@ -4,6 +4,8 @@ const PORT = 3000
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 const Shorten = require('./models/shorten')
+const generateShortenCode = require('./untis/generateShortenCode')
+const shortenCodeLength = 5
 
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection
@@ -29,19 +31,20 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => {
   const url = req.body.url.trim()
+  console.log(url.isValidUrl())
 
   Shorten.find({ url: url })
     .lean()
     .then(result => {
-      if (result.length === 0) {
+      if (result.length === 0) { // 如果為0，表示資料庫沒有
         const newShorten = {
-          url: body.url,
-          shorten_url: "http://localhost:3000/12345"
+          url: url,
+          shortenCode: generateShortenCode(shortenCodeLength)
         }
-        Shorten.create(newShorten)
-        res.render('index', { shorten: newShorten })
+        Shorten.create(newShorten) // 建立新資料
+        res.render('index', { shorten: newShorten }) // 傳給 index 去渲染得到的短網址
       } else {
-        res.render('index', { shorten: result[0] })
+        res.render('index', { shorten: result[0] }) // 如果不為0，表示資料庫有，直接將結果傳給 index 去渲染
       }
     })
     .catch(err => console.log(err))

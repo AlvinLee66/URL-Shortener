@@ -6,12 +6,12 @@
     </div>
     {{#if shorten}}
     <h2>Success！Please use this link:</h2>
-    <p>{{ shorten.shortenCode }}</p>
+    <code>http://localhost:3000/{{ shorten.shortenCode }}</code>
     {{else}}
     <form method="POST" action="/">
       <div class="input-group mb-3" style="width: 700px;">
         <span class="input-group-text" id="basic-addon3">input your URL:</span>
-        <input type="text" name="url" class="form-control" placeholder="https://example.com/users/..." id="basic-url" aria-describedby="basic-addon3">
+        <input type="text" name="url" class="form-control" placeholder="https://example.com/users/..." id="basic-url" aria-describedby="basic-addon3" required>
       </div>
       
       <button class="btn btn-outline-primary" type="submit">Shorten</button>
