@@ -33,8 +33,12 @@ router.get('/:shortenCode', (req, res) => {
   Shorten.find({ shortenCode }) // 用 shortenCode 找出對應的資料
     .lean()
     .then(result => {
-      const url = result[0].url
-      res.redirect(`${url}`) // 導入對應的原網址
+      if (result.length === 0) { // 如果為0，表示資料庫沒有
+        res.render('error', { error: `http://localhost:3000/${shortenCode}` }) // 傳給 error 去渲染訊息
+      } else {
+        const url = result[0].url
+        res.redirect(`${url}`) // 導入對應的原網址
+      }
     })
     .catch(err => console.log(err))
 })
