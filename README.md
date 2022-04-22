@@ -16,6 +16,11 @@
   ```
 
 ## How to use
+* Set environment variable(note: can't enter spaces before and after the `=`)
+  ```bash
+  export MONGODB_URI="<your URL>"
+  e.g. export MONGODB_URI="mongodb+srv://account:password@exemple.mongodb.net/shorten-list?retryWrites=true&w=majority"
+  ```
 * If you need the seeder data enter
   ```bash
   npm run seed
